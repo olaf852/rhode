@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>rhode — peptide lip tint</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif&family=Inter:wght@400;500&display=swap">
+<style>
+:root{--bg:#fff3ee;--ink:#3a1020;--pink:#f2a5bd;--flood:#f7bfd0;--btn:#3a1020;--btnt:#fff3ee;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#1c0b12;--ink:#ffe9ef;--flood:#d9809d;--btn:#ffe9ef;--btnt:#1c0b12}}
+:root[data-theme="dark"]{--bg:#1c0b12;--ink:#ffe9ef;--flood:#d9809d;--btn:#ffe9ef;--btnt:#1c0b12}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box;margin:0}
+body{background:var(--bg);color:var(--ink);font-family:Inter,system-ui,sans-serif;overflow-x:hidden}
+.track{height:650vh;position:relative}
+.stage{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden}
+.stage>*{position:absolute}
+#goo{inset:0;filter:url(#gooF)}
+#goo div{position:absolute;background:var(--pink)}
+#stream{width:30px;margin-left:-15px;transform-origin:top;border-radius:0 0 15px 15px}
+#blob,#pool{border-radius:50%}
+#wrap{overflow:hidden;z-index:2}
+#wrap img{position:absolute;left:50%}
+.rip{border:2px solid #fff;border-radius:50%;z-index:3;transform:translate(-50%,-50%);opacity:0}
+#tube{z-index:4;transform:translate(-50%,-50%)}
+#flood{inset:0;background:var(--flood);z-index:5;clip-path:circle(0 at 50% 50%)}
+#card{z-index:6;border-radius:28px;overflow:hidden;box-shadow:0 30px 80px rgba(120,30,60,.25);transform:translate(-50%,-50%)}
+#card img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+#pen{z-index:7;width:0;height:0}
+#pen img{position:absolute;bottom:0;left:50%;transform:translateX(-50%) rotate(-35deg);transform-origin:50% 100%;filter:drop-shadow(0 14px 18px rgba(80,10,40,.35))}
+.cap{z-index:8;right:6vw;top:38%;max-width:34vw;opacity:0;pointer-events:none}
+.cap.l{right:auto;left:6vw}
+.cap h2{font:400 clamp(34px,5vw,76px)/1 "Instrument Serif",Georgia,serif}
+.cap p{margin-top:12px;font-size:15px;opacity:.75}
+nav{z-index:20;top:max(14px,env(safe-area-inset-top,0px));left:50%;transform:translateX(-50%);display:flex;align-items:center;gap:22px;padding:8px 10px 8px 22px;border-radius:99px;background:rgba(255,255,255,.55);backdrop-filter:blur(10px);color:#3a1020;font-size:14px}
+nav b{font:400 24px "Instrument Serif",Georgia,serif}
+button{font:500 15px Inter,system-ui,sans-serif;border:0;border-radius:99px;padding:13px 26px;background:var(--btn);color:var(--btnt);cursor:pointer}
+nav button{padding:8px 18px;font-size:13px}
+.end{inset:0;z-index:9;display:flex;align-items:center;justify-content:center;gap:6vw;padding:0 6vw;opacity:0;pointer-events:none;flex-wrap:wrap}
+.fig{position:relative;width:min(34vw,300px);aspect-ratio:1;flex:none}
+.fig img{position:absolute}
+.end h2{font:400 clamp(40px,6vw,88px)/.95 "Instrument Serif",Georgia,serif}
+.end p{margin:14px 0 22px;max-width:380px;opacity:.78;line-height:1.5}
+.price{font:400 44px "Instrument Serif",Georgia,serif;margin-bottom:18px}
+.row{display:flex;gap:12px;flex-wrap:wrap}
+.row .ghost{background:transparent;color:var(--ink);border:1.5px solid var(--ink)}
+.hint{z-index:8;bottom:24px;left:50%;transform:translateX(-50%);font-size:12px;letter-spacing:.2em;text-transform:uppercase;opacity:.6}
+@media(max-width:760px){.cap,.cap.l{left:6vw;right:6vw;top:auto;bottom:9vh;max-width:none;text-align:center}.fig{width:44vw}.end{text-align:center}.row{justify-content:center}}
+.stage::before{content:"";position:absolute;inset:0;background:radial-gradient(70% 60% at 50% 45%,rgba(255,255,255,.55),transparent 70%);pointer-events:none}
+.stage::after{content:"";position:absolute;inset:0;z-index:30;pointer-events:none;opacity:.07;background:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence baseFrequency='.8' numOctaves='2'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>")}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .stage::before{opacity:.07}}
+#shine{z-index:3;border-radius:50%;background:radial-gradient(closest-side,rgba(255,255,255,.75),transparent);opacity:0}
+#edge{position:absolute;top:0;bottom:0;width:70px;margin-left:-35px;background:linear-gradient(90deg,transparent,rgba(255,255,255,.6),transparent)}
+#tag{position:absolute;top:16px;left:16px;padding:6px 14px;border-radius:99px;background:rgba(255,255,255,.72);color:#3a1020;font-size:12px;letter-spacing:.12em;text-transform:uppercase}
+.dots{z-index:20;right:18px;top:50%;transform:translateY(-50%);display:flex;flex-direction:column;gap:10px}
+.dots i{width:7px;height:7px;border-radius:50%;background:var(--ink);opacity:.25;transition:.3s}.dots i.on{opacity:1;transform:scale(1.5)}
+.bar{z-index:21;top:0;left:0;height:3px;background:var(--ink);width:0}
+.qty{display:flex;align-items:center;gap:14px;border:1.5px solid var(--ink);border-radius:99px;padding:4px 6px}
+.qty button{width:34px;height:34px;padding:0;background:transparent;color:var(--ink);font-size:18px}
+.feat{display:flex;gap:8px;flex-wrap:wrap;list-style:none;padding:0;margin-top:20px}
+.feat li{font-size:12px;padding:6px 14px;border-radius:99px;background:rgba(242,165,189,.3)}
+nav #bag{font-weight:500}
+@media(max-width:760px){.feat,.end p{display:none}}
+#stream{background:linear-gradient(90deg,color-mix(in srgb,var(--pink),#000 22%),color-mix(in srgb,var(--pink),#fff 38%) 35%,var(--pink) 62%,color-mix(in srgb,var(--pink),#000 25%))}
+#pool{background:radial-gradient(ellipse at 40% 22%,color-mix(in srgb,var(--pink),#fff 42%),var(--pink) 45%,color-mix(in srgb,var(--pink),#000 24%))}
+#blob{background:radial-gradient(circle at 35% 30%,color-mix(in srgb,var(--pink),#fff 50%),var(--pink) 60%,color-mix(in srgb,var(--pink),#000 22%))}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute"><filter id="gooF" color-interpolation-filters="sRGB"><feGaussianBlur in="SourceGraphic" stdDeviation="9" result="b"/><feColorMatrix in="b" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 20 -8" result="goo"/><feGaussianBlur in="goo" stdDeviation="5" result="bump"/><feDiffuseLighting in="bump" surfaceScale="7" diffuseConstant="1" lighting-color="#fff" result="dif"><feDistantLight azimuth="235" elevation="58"/></feDiffuseLighting><feComposite in="goo" in2="dif" operator="arithmetic" k1="1.3" k2="0" k3="0" k4="0" result="shaded"/><feSpecularLighting in="bump" surfaceScale="8" specularConstant="1.2" specularExponent="26" lighting-color="#fff" result="spec"><fePointLight x="420" y="-220" z="320"/></feSpecularLighting><feComposite in="spec" in2="goo" operator="in" result="specIn"/><feComposite in="shaded" in2="specIn" operator="arithmetic" k1="0" k2="1" k3="1" k4="0"/></filter></svg>
+<div class="track"><div class="stage" id="stage">
+<nav><b>rhode</b><span>Lips</span><span>Skin</span><span id="bag">Bag (0)</span><button id="shop">Shop</button></nav>
+<div id="goo"><div id="stream"></div><div id="blob"></div><div id="pool"></div></div>
+<div id="wrap"><img id="berry" data-i="B" alt=""></div>
+<div class="rip"></div><div class="rip"></div><div class="rip"></div><div id="shine"></div>
+<img id="tube" data-i="T" alt="rhode peptide lip tint">
+<div id="flood"></div>
+<div id="card"><img id="bef" data-i="BE" alt="Lips before"><img id="aft" data-i="AF" alt="Lips after"><div id="edge"></div><span id="tag">Before</span></div>
+<div id="pen"><img data-i="T" alt=""></div>
+<div class="cap" data-a="0" data-b=".13"><h2>Peptide<br>Lip Tint</h2><p>Scroll to taste it.</p></div>
+<div class="cap" data-a=".2" data-b=".35"><h2>Pour<br>pink.</h2></div>
+<div class="cap" data-a=".37" data-b=".52"><h2>A little<br>strawberry.</h2></div>
+<div class="cap l" data-a=".64" data-b=".85"><h2>Swipe.<br>Glow.</h2><p>Sheer pink colour, glossy finish.</p></div>
+<div class="end" id="end"><div class="fig"><img data-i="T" style="height:112%;left:50%;top:-6%;transform:translateX(-50%) rotate(-8deg);filter:drop-shadow(0 24px 30px rgba(120,30,60,.3))" alt="rhode peptide lip tint"></div>
+<div><h2>Peptide<br>Lip Tint</h2><p>A glossy, tinted treatment for soft, plush-looking lips. Wear it alone or over your favourite liner.</p><div class="price" id="pr">$20</div><div class="row"><div class="qty"><button id="m">−</button><span id="q">1</span><button id="pl">+</button></div><button id="add">Add to bag</button></div>
+<ul class="feat"><li>Peptide-rich</li><li>Sheer, buildable tint</li><li>Non-sticky shine</li></ul></div></div>
+<div class="dots" id="dots"><i></i><i></i><i></i><i></i><i></i></div><div class="bar" id="bar"></div><div class="hint" id="hint">Scroll</div>
+</div></div>
+<script>
+const IMG={T:"tint.png",B:"strawberry.png",BE:"lips_before.jpg",AF:"lips_after.jpg"};
+document.querySelectorAll("[data-i]").forEach(e=>e.src=IMG[e.dataset.i]);
+const $=s=>document.querySelector(s),st=$("#stage"),caps=[...document.querySelectorAll(".cap")],rips=[...document.querySelectorAll(".rip")];
+const cl=(x,a=0,b=1)=>Math.min(b,Math.max(a,x)),sg=(p,a,b)=>cl((p-a)/(b-a)),ez=t=>t<.5?2*t*t:1-Math.pow(-2*t+2,2)/2,lp=(a,b,t)=>a+(b-a)*t;
+const S=(e,o)=>Object.assign(e.style,o),px=v=>v+"px";
+function draw(p){
+ const W=st.clientWidth,H=st.clientHeight,m=W<760;
+ const a=ez(sg(p,.1,.25)),th=lp(.6*H,.44*H,a),tx=lp(W/2,m?W*.5:W*.3,a),ty=lp(.5*H,m?.3*H:.36*H,a);
+ S($("#tube"),{height:px(th),left:px(tx),top:px(ty),opacity:1-sg(p,.5,.56)});
+ const tipY=ty+th/2-th*.02,surf=.86*H,poolY=.9*H;
+ const s=ez(sg(p,.2,.3)),len=surf+10-tipY;
+ S($("#stream"),{left:px(tx),top:px(tipY),height:px(len),transform:`scaleY(${s})`});
+ S($("#blob"),{width:"44px",height:"44px",left:px(tx-22),top:px(tipY+len*s-22),opacity:p>.2?1:0});
+ const pw=lp(0,(m?1:.62)*W,ez(sg(p,.26,.36))),ph=.15*H;
+ S($("#pool"),{width:px(pw),height:px(ph),left:px(tx-pw/2),top:px(poolY-ph/2)});
+ const bh=.11*H,bw=bh*306/409,t=ez(sg(p,.34,.46)),t2=ez(sg(p,.46,.52));
+ S($("#wrap"),{left:px(tx-bw*.8),top:0,width:px(bw*1.6),height:px(surf)});
+ S($("#berry"),{height:px(bh),top:px(lp(tipY-bh*.3,surf-bh,t)+bh*t2),opacity:sg(p,.335,.35),transform:`translateX(-50%) scale(${lp(.3,1,sg(p,.33,.38))}) rotate(${t*40}deg)`});
+ rips.forEach((r,i)=>{const u=sg(p,.46+i*.02,.58);S(r,{left:px(tx),top:px(surf),width:px(u*.5*W),height:px(u*.07*H),opacity:u>0?(1-u)*.8:0})});
+S($("#shine"),{left:px(tx-pw*.28),top:px(poolY-ph*.3),width:px(pw*.5),height:px(ph*.22),opacity:sg(p,.3,.38)*(1-sg(p,.54,.6))});
+ const du=sg(p,.46,.56);drs.forEach((d,i)=>{const dx=DX[i]*du,y=surf-DH[i]*H*Math.sin(Math.PI*du),z=DS[i]*(1-du*.4);S(d,{width:px(z),height:px(z),left:px(tx+dx-z/2),top:px(y-z/2),opacity:du>0&&du<1?1:0})});
+ S($("#flood"),{clipPath:`circle(${ez(sg(p,.5,.6))*Math.hypot(W,H)*1.05}px at ${tx}px ${poolY}px)`});
+ const ch=Math.min(.8*H,1.2*W*.86),cw=ch*.8,cx=m?W/2:W*.56,cy=H/2,cL=cx-cw/2,cT=cy-ch/2;
+ S($("#card"),{width:px(cw),height:px(ch),left:px(cx),top:px(cy),opacity:sg(p,.58,.64)*(1-sg(p,.87,.92)),transform:`translate(-50%,-50%) scale(${lp(.94,1,sg(p,.58,.66))})`});
+ const r=ez(sg(p,.64,.8)),rx=lp(-.08,1.08,r);
+ $("#aft").style.clipPath=`inset(0 ${(1-cl(rx))*100}% 0 0)`;
+$("#edge").style.left=cl(rx)*100+"%";$("#edge").style.opacity=r>0&&r<1?1:0;
+ const tg=rx>.5?"After":"Before";if($("#tag").textContent!==tg)$("#tag").textContent=tg;
+ const pen=$("#pen");S(pen,{left:px(cL+cw*rx),top:px(cT+ch*.58+Math.sin(r*12)*5),opacity:sg(p,.61,.65)*(1-sg(p,.8,.84))});
+ pen.firstElementChild.style.height=px(.36*H);
+ caps.forEach(c=>{const u=sg(p,+c.dataset.a,+c.dataset.a+.03)*(1-sg(p,+c.dataset.b-.03,+c.dataset.b));S(c,{opacity:u,transform:`translateY(${(1-u)*24}px)`})});
+ const e=sg(p,.88,.95);S($("#end"),{opacity:e,transform:`translateY(${(1-e)*30}px)`,pointerEvents:e>.8?"auto":"none"});
+ $("#hint").style.opacity=.6*(1-sg(p,0,.05));
+ $("#bar").style.width=p*100+"%";const ix=[0,.2,.37,.64,.88].filter(v=>p>=v-.001).length-1;[...$("#dots").children].forEach((c,i)=>c.classList.toggle("on",i===ix));
+}
+const DX=[-150,-90,-40,40,95,150,0],DH=[.16,.22,.28,.3,.2,.14,.36],DS=[16,12,20,18,12,16,22],rm=matchMedia("(prefers-reduced-motion:reduce)").matches;
+const drs=DX.map(()=>{const d=document.createElement("div");d.style.cssText="border-radius:50%;opacity:0";$("#goo").appendChild(d);return d});
+let q=1,bag=0;
+$("#m").onclick=()=>{q=Math.max(1,q-1);$("#q").textContent=q;$("#pr").textContent="$"+20*q};
+$("#pl").onclick=()=>{q=Math.min(9,q+1);$("#q").textContent=q;$("#pr").textContent="$"+20*q};
+$("#add").onclick=e=>{bag+=q;$("#bag").textContent=`Bag (${bag})`;e.target.textContent="Added ✓";setTimeout(()=>e.target.textContent="Add to bag",1600)};
+let cur=0,tgt=0;
+const prog=()=>cl(scrollY/(document.querySelector(".track").offsetHeight-innerHeight));
+addEventListener("scroll",()=>tgt=prog());addEventListener("resize",()=>draw(cur));
+$("#shop").onclick=()=>scrollTo({top:document.body.scrollHeight,behavior:"smooth"});
+(function loop(){cur+=(tgt-cur)*(rm?1:.12);if(Math.abs(tgt-cur)<1e-4)cur=tgt;draw(cur);requestAnimationFrame(loop)})();
+tgt=cur=prog();
+</script>
+</body>
+</html>
